@@ -21,7 +21,7 @@ jobs:
       with:
         root_file: main.tex
         working_directory: example
-        extra_packages: biblatex-ieee
+        extra_packages: "biblatex-ieee mwe"
     - name: Check pdf files
       run: |
         file slides/main.pdf | grep -q ' PDF '
