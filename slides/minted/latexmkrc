@@ -1,0 +1,5 @@
+# use pdflatex by default, so you don't need to pass `-pdf` argument
+$pdf_mode = 1;
+# -synctex=1 allow easy jumps between latex source and pdf file
+# -file-line-error make latex report file and line number when there is an error
+$pdflatex = 'pdflatex -synctex=1 -file-line-error %O %S';

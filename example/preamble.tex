@@ -1,0 +1,67 @@
+\usepackage{color}
+\usepackage[table,dvipsnames]{xcolor}
+
+\usepackage{microtype}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{balance}
+\usepackage{footmisc}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\let\emptyset\varnothing%
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{latexsym}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{amsthm}
+\usepackage{thmtools,thm-restate}
+\declaretheorem[style=plain]{axiom}
+\declaretheorem[style=definition]{definition}
+\declaretheorem[style=remark]{example}
+\declaretheorem[style=plain]{lemma}
+\declaretheorem[style=plain]{theorem}
+\declaretheorem[style=remark]{remark}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage[mode=buildnew]{standalone}
+
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{listings}
+
+\usepackage{hyperref}
+\usepackage[capitalise]{cleveref}
+\hypersetup{%
+    unicode,
+    psdextra,
+    hidelinks,
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=3,
+    plainpages=false,
+    pdfstartview={XYZ null null 1},
+    pdfpagemode={UseOutlines},
+    pdfpagelayout={OneColumn}
+}
+
+\usepackage[inline]{enumitem}
+\setlist{noitemsep,partopsep=0pt,topsep=0pt}
+\newlist{inlineenum}{enumerate*}{1}
+\setlist[inlineenum]{label=(\roman*),ref=(\roman*)} % chktex 36
+
+\usepackage[%
+    style=ieee,
+    dashed=false,
+    doi=false,
+    isbn=false,
+    giveninits=true,
+    maxnames=10,
+]{biblatex}
+\addbibresource{ref.bib}
+

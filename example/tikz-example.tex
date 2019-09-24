@@ -1,0 +1,10 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{tikzpicture}
+  \node[draw] (start) { Start };
+  \node[draw, right=2cm of start] (end) { End };
+  \draw[-latex] (start) -- (end);
+\end{tikzpicture}
+\end{document}

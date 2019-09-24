@@ -1,0 +1,402 @@
+% This is a comment
+
+% Here, we load IEEEtran class with option conference
+\documentclass[conference]{IEEEtran}
+
+% The region after \documentclass and before \begin{document} is called preamble.
+% You can load packages and define format of the document here.
+
+% The \input{...} command read another tex file.
+% This is particularly useful when dealing with large document.
+% For example, you may want put each section of the paper in a separated tex file.
+% Here, we put most of preamble definitions in preamble.tex file.
+\input{preamble.tex}
+
+\title{An Example of \LaTeX~Usage}
+\author{John Doe}
+
+\begin{document}
+
+% typeset the title
+\maketitle
+
+\begin{abstract}
+  This document shows how to use \LaTeX~to typeset an academic paper.
+\end{abstract}
+
+\section{Basic Syntax}
+
+It does not matter whether
+you enter one or several
+spaces        after a word.
+
+An empty line starts a new
+paragraph.
+
+You can force a line break without starting a new paragraph. Like this: \\
+There will be a line break before this sentence.
+
+You could also specify the vertical space after the line break. \\ [2ex]
+It creates a line break with vertical space equaling to 2 times of the height of character `x'.
+
+\section{Special Characters and Symbols}
+
+The following commands are used to typeset special characters:
+\# \$ \% \^{} \& \_ \{ \} \~{} \textbackslash
+
+Quotation marks should be typeset as following: `single quoted text' and ``double quoted text''.
+
+There are four kinds of dashes in \LaTeX{}.
+\begin{itemize}
+  \item hyphen: part-time.
+  \item en-dash: pages 1--10.
+  \item em-dash: yes---or no?
+  \item minus sign: $0$, $1$, and $-1$.
+\end{itemize}
+
+Ellipsis can be typeset as following: New York, Tokyo, Budapest, \ldots
+
+\section{Font Face \& Size}
+
+\subsection{Font Face Commands}
+
+\textrm{roman}
+\textsf{sans serif}
+\texttt{typewriter}
+\textmd{medium}
+\textbf{bold face}
+\textup{upright}
+\textit{italic}
+\textsl{slanted}
+\textsc{small caps}
+\emph{emphasized}
+\textnormal{document font}
+
+\subsection{Font Size Commands}
+
+{\tiny tiny font}                \\
+{\scriptsize very small font}    \\
+{\footnotesize quite small font} \\
+{\small small font}              \\
+{\normalsize normal font}        \\
+{\large large font}              \\
+{\Large large font}              \\
+{\LARGE very large font}         \\
+{\huge huge}                     \\
+{\Huge largest}
+
+\section{Space and Alignment}
+
+Force an unbreakable space using tilde symbol. e.g.~these~spaces~are~unbreakable. They cannot be broken by line break or page break.
+
+In addition to the normal space, a breakable space can be inserted using backslash following by a space. For example, there are three spaces\ \ \ inside this sentence.
+
+You can also specify the space like\hspace{5em}this.
+
+\vspace{5ex}
+
+The above command create a vertical space.
+
+To align the text.
+
+\begin{center}
+  text to be centered
+\end{center}
+
+\begin{flushleft}
+  text to be flushed left
+\end{flushleft}
+
+\begin{flushright}
+  text to be flushed right
+\end{flushright}
+
+\section{List Structures}
+
+\begin{enumerate}
+  \item You can nest the list
+        environments to your taste:
+        \begin{itemize}
+          \item But it might start to
+                look silly.
+          \item[-] With a dash.
+        \end{itemize}
+  \item Therefore remember:
+        \begin{description}
+          \item[Stupid] things will not
+                become smart because they are
+                in a list.
+          \item[Smart] things, though,
+                can be presented beautifully
+                in a list.
+        \end{description}
+\end{enumerate}
+
+You can custom the list using \texttt{enumitem} package.
+
+\begin{itemize}[label=-]
+  \item A
+  \item B
+\end{itemize}
+
+List environments can be inlined. The following \texttt{inlineenum} environment is defined in the \texttt{preamble.tex} file.
+\begin{inlineenum}
+  \item A
+  \item B
+\end{inlineenum}
+
+\section{Math}
+
+Inline math: \(\sum_i^k i\)
+
+Display math: \[\sum_i^k\]
+
+Math using the \texttt{equation} environment shown in \cref{eqn:1}.
+\begin{equation}
+  E = mc^2 \label{eqn:1}
+\end{equation}
+
+\Cref{eqn:2,eqn:3} use the \texttt{align} environment.
+\begin{align}
+  B' & =-\nabla \times E, \label{eqn:2}         \\
+  E' & =\nabla \times B - 4\pi j, \label{eqn:3}
+\end{align}
+
+Disable numbering for some equation.
+\begin{align}
+  a & = b + c \nonumber \\
+    & = d + e
+\end{align}
+
+Keep equations aligned across text.
+\begin{align*}
+  F & = f_1+f_2+f_3+...+f_n
+  \intertext{can be written as} % use \intertext{} to insert text while keep equations aligned.
+  F & = \sum_1^n{f_i}
+\end{align*}
+
+A list of equations without the alignment.
+\begin{gather*}
+  \cos(2\theta) = \cos^2\theta-\sin^2\theta \\
+  \lim\limits_{x \to \infty} \exp(-x) = 0 \\
+  a \bmod b \\
+  x \equiv a \pmod{b} \\
+  \log{(N)} \\
+  \operatorname{arg\,max}_a f(a) = \operatorname*{arg\,max}_b f(b) \\
+  n^{22} \\
+  f(n) = n^5 + 4n^2 + 2 |_{n=17} \\
+  \sum_{i=1}^{n} i \\
+  \lim_{x \to \infty} \frac{1}{x} \\
+  \frac{n!}{k!(n-k)!} = \binom{n}{k} \\
+  \sqrt{2} \\
+  \sqrt[n]{1+x+x^2+x^3+\dots+x^n} \\
+  \left(\frac{x^2}{y^3}\right) \\
+  P\left(A=2\middle|\frac{A^2}{B}>4\right) \\
+  \left\{\frac{x^2}{y^3}\right\}
+\end{gather*}
+
+Typeset matrices.
+
+\begin{gather*}
+  \begin{pmatrix}
+    a & b & c \\
+    d & e & f \\
+    g & h & i
+  \end{pmatrix} =
+  \begin{bmatrix}
+    a & b & c \\
+    d & e & f \\
+    g & h & i
+  \end{bmatrix}
+\end{gather*}
+
+\begin{gather*}
+  \left(\begin{array}{cc|c}
+    a & b & c \\
+    d & e & f
+  \end{array}\right)
+\end{gather*}
+
+Matrices can be embed inside another matrix.
+
+\begin{gather*}
+  \begin{pmatrix}
+    \begin{pmatrix}
+      a_{11} & a_{12} \\
+      a_{21} & a_{22} \\
+    \end{pmatrix}
+           & 0      & \cdots \\
+    0      &
+    \begin{pmatrix}
+      b_{11} & b_{12} \\
+      b_{21} & b_{22} \\
+    \end{pmatrix}
+           & \cdots          \\
+    \vdots & \vdots & \ddots
+  \end{pmatrix}
+\end{gather*}
+
+Cases:
+
+\begin{gather*}
+  f(x) = \left\{
+  \begin{array}{ll}
+    x & \text{if } x > 0, \\
+    0 & \text{otherwise}.
+  \end{array}\right.
+\end{gather*}
+
+\begin{gather*}
+  f(n) =
+  \begin{cases}
+    n/2      & \quad \text{if } n \text{ is even} \\
+    -(n+1)/2 & \quad \text{if } n \text{ is odd}
+  \end{cases}
+\end{gather*}
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Code}          & \textbf{Output}                     \\
+    \midrule
+    \verb|\mathnormal{...}| & $\mathnormal{ABCDEF~abcdef~123456}$ \\
+    \verb|\mathrm{...}| & $\mathrm{ABCDEF~abcdef~123456}$     \\
+    \verb|\mathit{...}| & $\mathit{ABCDEF~abcdef~123456}$     \\
+    \verb|\mathbf{...}| & $\mathbf{ABCDEF~abcdef~123456}$     \\
+    \verb|\mathsf{...}| & $\mathsf{ABCDEF~abcdef~123456}$     \\
+    \verb|\mathtt{...}| & $\mathtt{ABCDEF~abcdef~123456}$     \\
+    \verb|\mathfrak{...}| & $\mathfrak{ABCDEF~abcdef~123456}$   \\
+    \verb|\mathcal{...}| & $\mathcal{ABCDEF}$                  \\
+    \verb|\mathbb{...}| & $\mathbb{ABCDEF}$                   \\
+    \bottomrule
+  \end{tabular}
+  \caption{Math Fonts}\label{tab:math-fonts}
+\end{table}
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llr}
+    \toprule
+    \multicolumn{2}{c}{Item}             \\
+    \cmidrule(r){1-2}
+    Animal    & Description & Price (\$) \\
+    \midrule
+    Gnat      & per gram    & 13.65      \\
+              & each        & 0.01       \\
+    Gnu       & stuffed     & 92.50      \\
+    Emu       & stuffed     & 33.33      \\
+    Armadillo & frozen      & 8.99       \\
+    \bottomrule
+  \end{tabular}
+  \caption{An example of table}\label{tab:example}
+\end{table}
+
+\begin{figure*}[t]
+  \centering
+  \begin{subfigure}[b]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{example-image-a}
+    \caption{Example Image A}\label{fig:example:a}
+  \end{subfigure}
+  ~%
+  \begin{subfigure}[b]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{example-image-b}
+    \caption{Example Image B}\label{fig:example:b}
+  \end{subfigure}
+  \caption{An example of figure}\label{fig:example}
+\end{figure*}
+
+\begin{figure}[t]
+  \centering
+  \includestandalone[width=0.8\linewidth]{./tikz-example} % without the `.tex` extension
+  \caption{TikZ Figure in Article}\label{fig:tikz}
+\end{figure}
+
+\section{Figure \& Table}
+
+\Cref{tab:math-fonts} lists a variety of fonts available in the math mode. \Cref{tab:example} shows another example of table.
+
+\Cref{fig:example} consists of two figures: \cref{fig:example:a} and \cref{fig:example:b}. An figure drawn by TikZ in shown in \cref{fig:tikz}.
+
+\section{Theorems}
+
+\begin{definition}[Prime]
+  A prime is a natural number greater than 1 that cannot be formed by multiplying two smaller natural numbers.
+\end{definition}
+
+\begin{theorem}[Euclid]\label{thm:euclid}
+  For every prime $p$, there is a prime $p’>p$.
+\end{theorem}
+
+\begin{lemma}
+  According to \cref{thm:euclid}, there are infinitely many primes.
+\end{lemma}
+
+% use restatable to repeat a theorem.
+\begin{restatable}[Fermat's Last Theorem]{theorem}{fermantlast}\label{thm:fermantlast}%
+  Diophantine Equation \(x^n + y^n = z^n\), where $x$, $y$, $z$, and $n$ are integers, has no nonzero solutions for $n>2$.
+\end{restatable}
+
+\section{Algorithms \& Source Code}
+
+\begin{algorithm}[t]
+  \caption{How to write algorithms}\label{alg:1}
+  \KwData{this text}
+  \KwResult{learn to write algorithm}
+  initialization\;
+  \While{not at end of this document}{
+    read current\;
+    \eIf{understand}{
+      go to next section\;
+      current section becomes this one\;
+    }{
+      go back to the beginning\;
+    }
+  }
+\end{algorithm}
+
+\begin{lstlisting}[language=Python,float=t,caption={A example of listing},label=lst:1]
+def fib():
+  a, b = 0, 1
+  while 1:
+    yield a
+    a, b = b, a + b
+\end{lstlisting}
+
+\Cref{alg:1} and \cref{lst:1} show the example of pseudo algorithm and source code highlight.
+
+\section{Cross-references}\label{sec:ref}
+
+You can reference to \cref{sec:ref}. Or add some footnote~\footnote{Use \url{https://www.google.com} when you encounter problems in \LaTeX.}
+
+\section{Bibliography}
+
+You can cite a paper like this~\cite{shannon1948}.
+Or cite multiple papers at the same time~\cite{merkle1989,roussopoulos1995}.
+It is also useful to cite the authors. For example, \citeauthor*{roussopoulos1995} proposed a method to process nearest neighbor queries.
+
+To add an item in the reference list but without direct citation using \verb|\nocite{}| command.
+
+\nocite{latextutoiral}
+
+\section*{Acknowledgment}
+
+Use \verb|\section*{}| command to create a section without numbering. It is commonly to be used in the section of acknowledgment.
+
+% Use the following command offered by biblatex to print the reference
+\printbibliography
+
+% To create appendix, it is often to use \appendix command offered by \usepackage{appendix}.
+% However, we use the \appendices command here, which is provided by IEEEtran class.
+\appendices
+
+\section{Proof of Theorem~\ref{thm:fermantlast}}
+
+% repeat the theorem
+\fermantlast*
+
+\begin{proof}
+  There is a proof that was too large to fit in the margin.
+\end{proof}
+
+\end{document}

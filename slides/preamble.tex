@@ -1,0 +1,132 @@
+% utility packages
+\usepackage{etoolbox}
+\usepackage{multicol}
+\usepackage{relsize}
+
+% better text justifying
+\usepackage{microtype}
+% justify text inside list environment
+% Ref: http://liam0205.me/2017/04/11/justifying-in-beamer-s-lists/
+\usepackage{ragged2e}
+\makeatletter
+\patchcmd{\itemize}{\raggedright}{\justifying}{}{}
+\patchcmd{\beamer@enum@}{\raggedright}{\justifying}{}{}
+\patchcmd{\@@description}{\raggedright}{\justifying}{}{}
+\makeatother
+
+% math related packages
+\usepackage{amsmath}
+\usepackage[ruled,vlined]{algorithm2e}
+\SetAlCapNameFnt{\scriptsize}
+\SetAlCapFnt{\scriptsize}
+\SetAlFnt{\scriptsize}
+
+% figure related packages
+\usepackage{graphicx}
+\usepackage[scale=2]{ccicons}
+\usepackage{qrcode}
+\usepackage{tikz}
+\usepackage{tikzpagenodes}
+\usetikzlibrary{positioning}
+
+% table related packages
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{colortbl}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+% code highlight
+\usepackage{listings}
+\usepackage{minted}
+\definecolor{mintedbg}{HTML}{E5E9F0}
+\setminted{autogobble,bgcolor=mintedbg,fontsize=\small}
+\setmintedinline{bgcolor=mintedbg,fontsize=\smaller}
+\newminted{bash}{}
+\newminted{latex}{}
+\newmintinline{bash}{}
+\newmintinline{latex}{}
+\newcommand{\texdoc}[2]{\href{#2}{\bashinline|texdoc #1|}}
+
+% hyperref setting
+\hypersetup{
+  unicode,
+  psdextra,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=3,
+  bookmarksdepth=4,
+  pdfcenterwindow=true,
+  pdfstartview={Fit},
+  pdfpagemode={FullScreen},
+  pdfpagelayout={SinglePage},
+}
+\usepackage{bookmark}
+
+% beamer theme
+\usetheme{metropolis}
+\metroset{block=fill,numbering=fraction}
+
+% caption style
+\usepackage{subcaption}
+\setlength\abovecaptionskip{3pt}
+\setbeamerfont{caption}{size=\scriptsize}
+\renewcommand{\figurename}{Fig.}
+\captionsetup{labelformat=empty,labelsep=none,textfont={bf,it}}
+
+% Ref: https://github.com/gpoore/minted/blob/master/source/minted.dtx
+\newenvironment{latexexample}
+{\VerbatimEnvironment\begin{VerbatimOut}[gobble=3]{example.out}}{\end{VerbatimOut}%
+  \begin{center}
+    \begin{minipage}{0.47\linewidth}%
+      \inputminted[resetmargins,fontsize=\scriptsize]{latex}{example.out}%
+    \end{minipage}%
+    \hspace{0.05\linewidth}%
+    \begin{minipage}{0.47\linewidth}%
+      \begin{framed}
+        \setlength{\parindent}{2em}%
+        \input{example.out}%
+      \end{framed}
+    \end{minipage}%
+  \end{center}
+}
+
+\newenvironment{mathexample}
+{\VerbatimEnvironment\begin{VerbatimOut}[gobble=3]{example.out}}{\end{VerbatimOut}%
+  \begin{center}
+    \begin{minipage}{0.47\linewidth}%
+      \inputminted[resetmargins,fontsize=\scriptsize]{latex}{example.out}%
+    \end{minipage}%
+    \hspace{0.05\linewidth}%
+    \begin{minipage}{0.47\linewidth}%
+      \begin{framed}
+        \[ \input{example.out} \]
+      \end{framed}
+    \end{minipage}%
+  \end{center}
+}
+
+\newenvironment{mathexamples}
+{\VerbatimEnvironment\begin{VerbatimOut}[gobble=3]{example.out}}{\end{VerbatimOut}%
+  \begin{center}
+    \begin{minipage}{0.47\linewidth}%
+      \inputminted[resetmargins,fontsize=\scriptsize]{latex}{example.out}%
+    \end{minipage}%
+    \hspace{0.05\linewidth}%
+    \begin{minipage}{0.47\linewidth}%
+      \begin{framed}
+        \directlua{
+          local first = true
+          for line in io.lines('example.out') do
+          if first then
+          first = false
+          else
+          tex.print('\\newline ')
+          end
+          tex.print('$' .. line .. '$')
+          end
+        }
+      \end{framed}
+    \end{minipage}%
+  \end{center}
+}
