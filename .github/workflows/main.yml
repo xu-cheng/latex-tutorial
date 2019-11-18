@@ -1,4 +1,4 @@
-ame: Github Actions CI
+name: Github Actions CI
 on:
   push:
     branches:
