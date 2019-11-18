@@ -1,4 +1,4 @@
-name: Github Actions CI
+ame: Github Actions CI
 on:
   push:
     branches:
@@ -14,22 +14,17 @@ jobs:
       with:
         root_file: main.tex
         working_directory: slides
-        extra_system_packages: py-pygments
-        extra_packages: fira
     - name: Compile Example
       uses: xu-cheng/latex-action@master
       with:
         root_file: main.tex
         working_directory: example
-        extra_packages: "biblatex-ieee gincltex mwe"
     - name: Check pdf files
       run: |
         file slides/main.pdf | grep -q ' PDF '
         file example/main.pdf | grep -q ' PDF '
     - name: Upload
       run: |
-        set -e
-
         # configure git
         git config --global user.name "Cheng XU"
         git config --global user.email "git@xuc.me"
